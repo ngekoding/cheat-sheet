@@ -1,8 +1,13 @@
 # cheat-sheet
 ## GIT (Version Control)
-##### Merubah/Menambah repo github
+##### Baru bikin
 ```
- - git remote set-url origin git@github.com:username/projectname.git
+- echo "# sistem-upload" >> README.md
+- git init
+- git add README.md
+- git commit -m "first commit"
+- git remote add origin https://github.com/ngekoding/sistem-upload.git
+- git push -u origin master
 ```
 ##### PUSH
 ```
