@@ -1,5 +1,9 @@
 # cheat-sheet
 ## GIT (Version Control)
+##### Merubah/Menambah repo github
+```
+ - git remote set-url origin git@github.com:username/projectname.git
+```
 ##### PUSH
 ```
 - git add .
