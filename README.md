@@ -24,3 +24,14 @@
 git rm file --> file is your file name
             --> and then, use PUSH
 ```
+
+## PHP (How to do something?)
+##### Remove HTML Tag from string
+```
+$content = strip_tags($content);
+```
+##### Get first image from string
+```
+preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $content, $image);
+echo $image['src'];
+```
