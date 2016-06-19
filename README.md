@@ -9,6 +9,12 @@
 - git remote add origin https://github.com/ngekoding/sistem-upload.git
 - git push -u origin master
 ```
+##### Mengatur Username & Email
+```
+- git config --global user.name "Nur Muhammad"
+- git config --global user.email "blog.nurmuhammad@gmail.com"
+** Cara diatas untuk mengatur disemua repositori, untuk spesifik hilangkan `--global`
+```
 ##### PUSH
 ```
 - git add .
