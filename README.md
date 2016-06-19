@@ -13,7 +13,7 @@
 ```
 - git config --global user.name "Nur Muhammad"
 - git config --global user.email "blog.nurmuhammad@gmail.com"
-* Cara diatas untuk mengatur disemua repositori, untuk spesifik hilangkan ``--global``
+* Cara diatas untuk mengatur disemua repositori, untuk spesifik hilangkan "--global"
 ```
 ##### PUSH
 ```
