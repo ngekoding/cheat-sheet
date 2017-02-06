@@ -30,7 +30,10 @@
 git rm file --> file is your file name
             --> and then, use PUSH
 ```
-
+##### SHOW CONFIG
+```
+git config --list
+```
 ## PHP (How to do something?)
 ##### Remove HTML Tag from string
 ```
