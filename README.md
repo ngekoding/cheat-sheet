@@ -44,3 +44,8 @@ $content = strip_tags($content);
 preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $content, $image);
 echo $image['src'];
 ```
+##### Remove img tag from string
+```
+preg_replace("/<img[^>]+\>/i", "(image) ", $content);
+echo $content;
+```
