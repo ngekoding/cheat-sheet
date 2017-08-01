@@ -52,8 +52,7 @@ echo $content;
 ##### Checking valid URL
 ```
 public function valid_url($url) {
-    if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
-        $this->form_validation->set_message('valid_url', 'URL tidak valid!');
+    if (!preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}'.'((:[0-9]{1,5})?\\/.*)?$/i', $url)) {
         return FALSE;
     }
     return TRUE;
