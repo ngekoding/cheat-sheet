@@ -49,3 +49,13 @@ echo $image['src'];
 preg_replace("/<img[^>]+\>/i", "(image) ", $content);
 echo $content;
 ```
+##### Checking valid URL
+```
+public function valid_url($url) {
+    if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+        $this->form_validation->set_message('valid_url', 'URL tidak valid!');
+        return FALSE;
+    }
+    return TRUE;
+}
+```
