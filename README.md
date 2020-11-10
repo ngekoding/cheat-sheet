@@ -34,6 +34,9 @@ git rm file --> file is your file name
 ```
 git config --list
 ```
+##### REMOVE A COMMIT THAT ALREADY PUSHED
+1. `git log` to find out the commit you want to revert
+2. `git push origin +7f6d03:master` while `7f6d03` is the commit before the wrongly pushed commit. + was for force push
 
 ## PHP (How to do something?)
 ##### Remove HTML Tag from string
