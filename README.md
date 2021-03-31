@@ -38,6 +38,11 @@ git config --list
 1. `git log` to find out the commit you want to revert
 2. `git push origin +7f6d03:master` while `7f6d03` is the commit before the wrongly pushed commit. + was for force push
 
+##### Merging without Auto-Merge
+1. `git merge --no-commit --no-ff <local-branch>`
+2. `git reset HEAD`
+3. To see all diff: `git diff`
+
 ## PHP (How to do something?)
 ##### Remove HTML Tag from string
 ```
