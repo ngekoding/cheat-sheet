@@ -68,6 +68,90 @@ public function valid_url($url) {
 }
 ```
 
+### PHPSpreadsheet
+
+#### Without Template
+
+```php
+// For simple access
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+
+// Write to cell
+$sheet->setCellValue('A1', 'The Title');
+
+// Merging
+$sheet->mergeCells('A3:A4');
+
+// Styling font (bold, sizing)
+$sheet->getStyle('A1')
+    ->getFont()
+    ->setBold(TRUE)
+    ->setSize(16);
+
+// Setting column width
+$sheet->getColumnDimension('A')->setWidth(5, 'px');
+
+// Styling cell with array
+$sheet->getStyle('A3:D4')
+    ->applyFromArray([
+        'font' => ['bold' => TRUE],
+        'fill' => [
+            'fillType' => Fill::FILL_SOLID,
+            'color' => ['rgb' => 'EFEFEF'] 
+        ],
+        'alignment' => [
+            'horizontal' => Alignment::HORIZONTAL_CENTER,
+            'vertical' => Alignment::VERTICAL_CENTER,
+        ]
+    ]);
+
+// Alignment
+$sheet->getStyle('A'.$row)
+    ->getAlignment()
+    ->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+// Bordering
+$sheet->getStyle('A3:D4')
+    ->getBorders()
+    ->getAllBorders()
+    ->setBorderStyle(Border::BORDER_THIN);
+
+$filename = 'Filename - '.time().'.xlsx';
+
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="'.$filename.'"');
+header('Cache-Control: max-age=0');
+
+$writer = new Xlsx($spreadsheet);
+$writer->save('php://output');
+```
+
+#### Using Template
+
+```php
+$reader = IOFactory::createReader('Xlsx');
+$spreadsheet = $reader->load('/path/totemplate.xlsx');
+$spreadsheet->getProperties()
+    ->setCreator('Document Creator')
+    ->setTitle('Document Title');
+
+$sheet = $spreadsheet->getActiveSheet();
+
+// Add filename & header like before
+
+$writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+$writer->save('php://output');
+```
+
 ## CSS Tricks
 #### CSS Triangle
 ```
