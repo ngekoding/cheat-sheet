@@ -125,6 +125,18 @@ $sheet->getStyle('A3:D4')
     ->getAllBorders()
     ->setBorderStyle(Border::BORDER_THIN);
 
+// Format currency
+$sheet->getStyle('A3:A10')
+    ->getNumberFormat()
+    ->setFormatCode('#,##0.00');
+
+// Format date
+$date = \PhpOffice\PhpSpreadsheet\Shared\Date::PHPToExcel('2024-01-01'); // Requires to apply date format
+$sheet->setCellValue('B1', $date);
+$sheet->getStyle('B1')
+    ->getNumberFormat()
+    ->setFormatCode('dd/mm/yyyy');
+
 $filename = 'Filename - '.time().'.xlsx';
 
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
