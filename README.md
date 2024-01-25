@@ -164,6 +164,28 @@ $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
 ```
 
+## Helper
+
+#### Checking date range availability
+
+```php
+function isDateRangeAvailable($conn, $dateStart, $dateEnd) {
+    $sql = "SELECT * FROM bookings WHERE 
+            (dateStart >= '$dateStart' AND dateEnd <= '$dateEnd') OR 
+            (dateEnd >= '$dateStart' AND dateStart <= '$dateEnd')";
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // There are existing bookings that overlap with the specified date range
+        return false;
+    } else {
+        // Date range is available
+        return true;
+    }
+}
+```
+
 ## CSS Tricks
 #### CSS Triangle
 ```
