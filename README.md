@@ -114,6 +114,13 @@ $sheet->getStyle('A3:D4')
         ]
     ]);
 
+// Background color
+$sheet->getStyle('A'.$row)
+    ->getFill()
+    ->setFillType(Fill::FILL_SOLID)
+    ->getStartColor()
+    ->setARGB('EFEFEF');
+
 // Alignment
 $sheet->getStyle('A'.$row)
     ->getAlignment()
