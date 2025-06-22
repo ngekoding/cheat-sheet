@@ -158,6 +158,11 @@ $writer->save('php://output');
 
 ```php
 $reader = IOFactory::createReader('Xlsx');
+
+// Enable reading of raw cell values only, ignoring formatting (e.g., currency symbols, styles).
+// Recommended when importing uploaded files to get unformatted data.
+$reader->setReadDataOnly(true);
+
 $spreadsheet = $reader->load('/path/totemplate.xlsx');
 $spreadsheet->getProperties()
     ->setCreator('Document Creator')
